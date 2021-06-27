@@ -10,6 +10,8 @@
 
 To use the kitchen.yml I've included you also need [vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) - You could also alter the kitchen.yml to use one of the other [Kitchen Drivers](https://kitchen.ci/docs/drivers/)
 
+## Running the test
+
 The Policyfile.rb contains the configuration state we require for our infrastructure. In this case just ensure the Lacework agent is installed.
 
 Since there is no cookbook in this repo we use the policyfile to download the cookbook from github. To do this run `chef install` from the directory where the policyfile resides.  
@@ -18,3 +20,4 @@ Once you're ready to try it, change into the repo's root where the kitchen.yml i
 
 `kitchen converge`
 
+It will take a short time, 7 - 15 minutes usually, and you'll see the agent reporting in the target Lacework tenant. If not, run `kitchen login` to access the VM and review the datacollector.log located in /var/log/lacework/ to see if you can find the problem.
